@@ -1,0 +1,29 @@
+html{
+  overflow: hidden;
+}
+
+.btn{
+  float: right;
+  font-size: 65px;
+  margin-top: -8px;
+  color: rgb(168, 168, 168);
+  animation-name: btnHoverReturn;
+  animation-duration: 0.1s;
+  animation-fill-mode: forwards;
+}
+
+.btn:hover{
+  animation-name: btnHover;
+  animation-duration: 0.1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes btnHover {
+  from {color: rgb(168, 168, 168); transform: scale(1);}
+  to {color: #76B635; transform: scale(1.25);}
+}
+
+@keyframes btnHoverReturn {
+  from {color: #76B635; transform: scale(1.25);}
+  to {color: rgb(168, 168, 168); transform: scale(1);}
+}

@@ -1,0 +1,119 @@
+.content{
+  background-color: rgba(231, 231, 231, 0.527);
+  height: 100vh;
+  width: 40%;
+  font-family: 'Georama', sans-serif;
+  font-size: 20px;
+  letter-spacing: 2px;
+  display: inline-block;
+  overflow-y: scroll;
+}
+
+h1{
+  margin: 20px;
+  color: rgb(59, 59, 59);
+}
+
+li{
+  list-style-type: none;
+}
+
+.employee-preview{
+  padding-top: 18px;
+  height: 118px;
+  margin: 20px 20px -20px 0px;
+  animation-name: employeeBtnHoverReturn;
+  animation-duration: 0.1s;
+  animation-fill-mode: forwards;
+}
+
+.employee-preview:hover{
+  height: 118px;
+  animation-name: employeeBtnHover;
+  animation-duration: 0.1s;
+  animation-fill-mode: forwards;
+}
+
+
+
+@keyframes employeeBtnHover {
+  from {background-color: inherit}
+  to {background-color: #76B635;}
+}
+
+@keyframes employeeBtnHoverReturn {
+  from {background-color: #76B635;}
+  to {background-color: inherit;}
+}
+
+.delete-btn{
+  float: right;
+  font-size: 36px;
+  margin-top: -9px;
+  padding-right: 13px;
+  color: rgb(168, 168, 168);
+  animation-name: deleteBtnHoverReturn;
+  animation-duration: 0.1s;
+  animation-fill-mode: forwards;
+}
+
+.delete-btn:hover{
+  animation-name: deleteBtnHover;
+  animation-duration: 0.1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes deleteBtnHover {
+  from { transform: scale(1); }
+  to { transform: scale(1.25); }
+}
+
+@keyframes deleteBtnHoverReturn {
+  from { transform: scale(1.25); }
+  to { transform: scale(1); }
+}
+
+.employee-image{
+  border-radius: 50%;
+  width: 100px;
+  float: left;
+  margin: 11px 20px 20px 20px;
+}
+
+.employee-preview-name{
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 34px;
+  margin-bottom: -16px;
+  color:rgb(59, 59, 59);
+}
+
+.employee-preview-position{
+  font-weight: 600;
+  color:rgb(168, 168, 168);
+}
+
+.employee-preview:first-of-type{
+  margin: 0px 20px -20px 0px;
+}
+
+.employee-image:first-of-type{
+  border-radius: 50%;
+  width: 100px;
+  float: left;
+  margin: 0px 20px 20px 20px;
+}
+
+.employee-preview-name:first-of-type{
+  margin-top: 24px;
+}
+
+.employee-preview:last-of-type{
+  padding-top: 18px;
+  padding-bottom: 10px;
+  margin: 20px 20px 20px 0px;
+}
+
+a{
+  text-decoration: none;
+}
