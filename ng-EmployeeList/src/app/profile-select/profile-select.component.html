@@ -1,20 +1,21 @@
 <div class="display-info">
   <a href="/"><span class="material-icons btn rightHandSideBtns">delete</span></a>
   <a href="/"><span class="material-icons btn rightHandSideBtns">edit</span></a>
-  <img class="photo" src="https://picsum.photos/200" alt="">
+  <img class="photo" src="{{employees.employeePic}}" alt="">
+  <!-- https://i0.wp.com/prikachi.com/wp-content/uploads/2020/07/DPP1.jpg DEFAULT PIC, perhaps save locally -->
   <!-- <p class="unselected-dialog">Please select an employee.</p> -->
   <div class="full-bio">
-    <p class="name">Luca Bruno</p>
-    <p class="position">Job title at Company Ltd</p>
+    <p class="name">{{employees.employeeName}}</p>
+    <p class="position">{{employees.employeeJobPosition}} at {{employees.employeeCompany}}</p>
   <div class="info">
     <p class="info-header">Motto</p>
-    <p class="info-field">Motto text</p>
+    <p class="info-field">{{employees.employeeMotto}}</p>
     <p class="info-header">Hobbies</p>
-    <p class="info-field">Hobbies text</p>
+    <p class="info-field">{{employees.employeeHobbies}}</p>
     <p class="info-header">Hometown</p>
-    <p class="info-field">Hometown text</p>
+    <p class="info-field">{{employees.employeeHometown}}</p>
     <p class="info-header">Personal Blog</p>
-    <a href="/"><p class="info-field blog-domain">https://example.com/</p></a>
+    <a href="/"><p class="info-field blog-domain">{{employees.employeeBlog}}</p></a>
   </div>
   </div>
 </div>

@@ -9,7 +9,12 @@ export class ProfileSelectComponent implements OnInit {
 
   constructor() { }
 
+  employees = Object();
+
   ngOnInit(): void {
+    fetch('/api/employee')
+    .then(response => response.json())
+    .then(data => this.employees = data[0])
   }
 
 }
