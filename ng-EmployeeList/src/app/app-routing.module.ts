@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ListSidebarComponent } from './list-sidebar/list-sidebar.component';
 import { ProfileSelectComponent } from './profile-select/profile-select.component';
 
 
