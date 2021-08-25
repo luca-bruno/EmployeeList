@@ -1,22 +1,24 @@
 <div class="content" role="main">
-    <h1>List of Employees <a href="/"><span class="material-icons btn">add</span></a></h1>
+    <h1>List of Employees<a routerLink="/app-profile-create" routerLinkActive="active"><span class="material-icons btn">add</span></a></h1>
 
-    <li>
-      <a href=""><ul class="employee-preview">
-          <img class="employee-image" src="{{employees.employeePic}}" alt="">
-          <!-- https://i0.wp.com/prikachi.com/wp-content/uploads/2020/07/DPP1.jpg DEFAULT -->
-          <p class="employee-preview-name">
-            {{employees.employeeName}}
-          </p>
-          <a href="/"><span class="material-icons btn delete-btn">delete</span></a>
-          <p class="employee-preview-position">
-            {{employees.employeeJobPosition}} at {{employees.employeeCompany}}
-          </p>
-      </ul></a>
-    </li>
+    <ul class="employee-preview">
+      <li class="employee-tab" *ngFor="let e of employees">
+        <!-- <a id="{{e.employeeID}}" (click)="handleClick(e.employeeID)" class="employee-btn-presser" routerLink="/app-profile-select/{{e.employeeID}}" routerLinkActive="active"> -->
+        <!-- <a class="employee-btn-presser" routerLink="/app-profile-select/{{e.employeeID}}" routerLinkActive="active"> -->
+        <a class="employee-btn-presser" (click)="displayProfile()" routerLink="/app-profile-select/{{e.employeeID}}" routerLinkActive="active">
+            <img class="employee-image" src="{{e.employeePic}}" alt="">
+            <!-- https://i0.wp.com/prikachi.com/wp-content/uploads/2020/07/DPP1.jpg DEFAULT -->
+            <p class="employee-preview-name">
+              {{e.employeeName}}
+            </p>
+            <p class="employee-preview-position">
+              {{e.employeeJobPosition}} at {{e.employeeCompany}}
+            </p>
+            <a class="delete-btn-presser" routerLink="/app-profile-delete" routerLinkActive="active"><span class="material-icons btn delete-btn">delete</span></a>
+          </a>
+          </li>
+      </ul>
 
-</div>
-<app-profile-select></app-profile-select>
-
-
-
+    </div>
+    <app-profile-select [showProfile]="profileDisplayer"></app-profile-select>
+    <!-- <router-outlet></router-outlet> -->

@@ -1,43 +1,46 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import * as $ from "jquery";
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'ng-EmployeeList';
+export class AppComponent implements OnInit {
 
-  employees = Object();
+  employees: any;
+
+  profileDisplayer: boolean = false;
+
+  displayProfile(){
+        this.profileDisplayer = true;
+  }
+
+  constructor(private http: HttpClient) {
+
+  }
 
   ngOnInit(): void {
-    fetch('/api/employee')
-      .then(response => response.json())
-      .then(data => this.employees = data[0])
+
+    this.http.get('/api/employee')
+      .subscribe(Response => {
+        console.log(Response)
+        this.employees = Response;
+      })
   }
+
+
+  // handleClick(event : any) {
+
+  //   console.log(event);
+  //   let employee = this.employees.filter((x : any) => x.employeeId == event.target.id);
+
+  //   //set data for single employee details
+
+  // }
+
 }
 
-$(document).ready(function () {
-  $(".employee-preview").mouseover(function () {
-    $(this).find(".employee-preview-position").css("color", "white");
-  });
-});
 
-$(document).ready(function () {
-  $(".employee-preview").mouseover(function () {
-    $(this).find(".delete-btn").css("color", "white");
-  });
-});
 
-$(document).ready(function () {
-  $(".employee-preview").mouseout(function () {
-    $(this).find(".employee-preview-position").css("color", "#999999");
-  });
-});
-
-$(document).ready(function () {
-  $(".employee-preview").mouseout(function () {
-    $(this).find(".delete-btn").css("color", "#999999");
-  });
-});

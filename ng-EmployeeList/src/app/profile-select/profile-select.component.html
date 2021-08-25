@@ -1,23 +1,57 @@
-<div class="display-info">
-  <a href="/"><span class="material-icons btn rightHandSideBtns">delete</span></a>
-  <a href="/"><span class="material-icons btn rightHandSideBtns">edit</span></a>
-  <img class="photo" src="{{employees.employeePic}}" alt="">
-  <!-- https://i0.wp.com/prikachi.com/wp-content/uploads/2020/07/DPP1.jpg DEFAULT PIC, perhaps save locally -->
-  <!-- <p class="unselected-dialog">Please select an employee.</p> -->
-  <div class="full-bio">
-    <p class="name">{{employees.employeeName}}</p>
-    <p class="position">{{employees.employeeJobPosition}} at {{employees.employeeCompany}}</p>
-  <div class="info">
-    <p class="info-header">Motto</p>
-    <p class="info-field">{{employees.employeeMotto}}</p>
-    <p class="info-header">Hobbies</p>
-    <p class="info-field">{{employees.employeeHobbies}}</p>
-    <p class="info-header">Hometown</p>
-    <p class="info-field">{{employees.employeeHometown}}</p>
-    <p class="info-header">Personal Blog</p>
-    <a href="/"><p class="info-field blog-domain">{{employees.employeeBlog}}</p></a>
-  </div>
-  </div>
+<div class="display-info" *ngIf="showProfile == false; else profileDisplay">
+  <p class="unselected-dialog">Please select an employee.</p>
 </div>
 
+<ng-template #profileDisplay>
+  <ng-container *ngIf="yeah != 0; else firstProfile">
+    <div class="display-info">
+      <a routerLink="/app-profile-delete" routerLinkActive="active"><span class="material-icons btn rightHandSideBtns">delete</span></a>
+      <a routerLink="/app-profile-edit/{{employees[yeah].employeeID}}" routerLinkActive="active"><span class="material-icons btn rightHandSideBtns">edit</span></a>
+
+        <img class="photo" src="{{employees[yeah].employeePic}}" alt="">
+        <!-- https://i0.wp.com/prikachi.com/wp-content/uploads/2020/07/DPP1.jpg DEFAULT PIC, perhaps save locally -->
+        <div class="full-bio">
+          <p class="name">{{employees[yeah].employeeName}}</p>
+          <p class="position">{{employees[yeah].employeeJobPosition}} at {{employees[yeah].employeeCompany}}</p>
+          <div class="info">
+            <p class="info-header">Motto</p>
+            <p class="info-field">{{employees[yeah].employeeMotto}}</p>
+            <p class="info-header">Hobbies</p>
+            <p class="info-field">{{employees[yeah].employeeHobbies}}</p>
+            <p class="info-header">Hometown</p>
+            <p class="info-field">{{employees[yeah].employeeHometown}}</p>
+            <p class="info-header">Personal Blog</p>
+            <a href="{{employees[yeah].employeeBlog}}"><p class="info-field blog-domain">{{employees[yeah].employeeBlog}}</p></a>
+          </div>
+        </div>
+
+      </div>
+    </ng-container>
+
+    <ng-template #firstProfile>
+      <router-outlet></router-outlet>
+      <div class="display-info">
+        <a routerLink="/app-profile-delete" routerLinkActive="active"><span class="material-icons btn rightHandSideBtns">delete</span></a>
+        <a routerLink="/app-profile-edit/{{employees[0].employeeID}}" routerLinkActive="active"><span class="material-icons btn rightHandSideBtns">edit</span></a>
+
+          <img class="photo" src="{{employees[0].employeePic}}" alt="">
+          <!-- https://i0.wp.com/prikachi.com/wp-content/uploads/2020/07/DPP1.jpg DEFAULT PIC, perhaps save locally -->
+          <div class="full-bio">
+            <p class="name">{{employees[0].employeeName}}</p>
+            <p class="position">{{employees[0].employeeJobPosition}} at {{employees[0].employeeCompany}}</p>
+            <div class="info">
+              <p class="info-header">Motto</p>
+              <p class="info-field">{{employees[0].employeeMotto}}</p>
+              <p class="info-header">Hobbies</p>
+              <p class="info-field">{{employees[0].employeeHobbies}}</p>
+              <p class="info-header">Hometown</p>
+              <p class="info-field">{{employees[0].employeeHometown}}</p>
+              <p class="info-header">Personal Blog</p>
+              <a href="{{employees[0].employeeBlog}}"><p class="info-field blog-domain">{{employees[0].employeeBlog}}</p></a>
+            </div>
+          </div>
+
+        </div>
+    </ng-template>
+</ng-template>
 

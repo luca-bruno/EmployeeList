@@ -27,3 +27,92 @@ html{
   from {color: #76B635; transform: scale(1.25);}
   to {color: rgb(168, 168, 168); transform: scale(1);}
 }
+
+/* right hand side components i.e. Displaying, editing profile */
+.display-info {
+  float: right;
+  height: 100vh;
+  width: 60%;
+}
+
+.unselected-dialog {
+  text-align: center;
+  font-family: 'Georama', sans-serif;
+  font-size: 20px;
+  letter-spacing: 2px;
+  color: rgb(59, 59, 59);
+  padding-top: 45vh;
+  font-weight: 600;
+}
+
+.rightHandSideBtns{
+  font-size: 49px;
+  margin-top: 22px;
+  margin-right: 20px;
+}
+
+.photo{
+  border-radius: 100px;
+  margin-top: 110px;
+  border: 5px solid #76B635;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 185px;
+  height: 185px;
+}
+
+.full-bio{
+  font-family: 'Georama', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: 2px;
+  margin-top: 25px;
+}
+
+.name{
+  color:#76B635;
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: -13px;
+}
+
+.position{
+  color:rgb(168, 168, 168);
+  text-align: center;
+  margin-bottom: -13px;
+}
+
+.info-header{
+  color:rgb(168, 168, 168);
+  margin-left: 50px;
+  margin-bottom: 5px;
+}
+
+.info-header:first-of-type{
+  margin-top: 55px;
+}
+
+.info-field{
+  color:rgb(59, 59, 59);
+  margin-left: 50px;
+  margin-top: 0;
+}
+
+.blog-domain{
+  color:#76B635;
+}
+
+a{
+  text-decoration: none;
+}
+
+li {
+  padding: 0;
+}
+
+.employee-btn-presser {
+    display: block;
+    padding: 20px;
+    margin-top: -20px;
+}

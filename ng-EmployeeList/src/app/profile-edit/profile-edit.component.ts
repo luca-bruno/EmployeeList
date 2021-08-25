@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-profile-edit',
@@ -7,9 +9,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileEditComponent implements OnInit {
 
-  constructor() { }
+  employees: any;
+  yeah = -1;
 
-  ngOnInit(): void {
+  constructor(private http: HttpClient,
+    private route: ActivatedRoute) {
+
   }
 
+  ngOnInit(): void {
+
+    this.http.get('/api/employee')
+      .subscribe(Response => {
+        console.log(Response)
+        this.employees = Response;
+      })
+
+    this.route.paramMap.subscribe(params => {
+      this.yeah = Number(this.route.snapshot.paramMap.get('employees.id'));
+      if (this.yeah > 0) {
+        --this.yeah;
+      }
+      console.log(this.yeah);
+    });
+  }
 }

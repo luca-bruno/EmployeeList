@@ -18,23 +18,31 @@ li{
   list-style-type: none;
 }
 
-.employee-preview{
-  padding-top: 18px;
+.employee-tab{
+  padding: 20px;
   height: 118px;
-  margin: 20px 20px -20px 0px;
   animation-name: employeeBtnHoverReturn;
   animation-duration: 0.1s;
   animation-fill-mode: forwards;
 }
 
-.employee-preview:hover{
-  height: 118px;
+.employee-tab:hover{
   animation-name: employeeBtnHover;
   animation-duration: 0.1s;
   animation-fill-mode: forwards;
 }
 
+.employee-tab:hover .employee-preview-name{
+  color: white;
+}
 
+.employee-tab:hover .employee-preview-position{
+  color: white;
+}
+
+.employee-tab:hover .delete-btn{
+  color: white;
+}
 
 @keyframes employeeBtnHover {
   from {background-color: inherit}
@@ -49,7 +57,7 @@ li{
 .delete-btn{
   float: right;
   font-size: 36px;
-  margin-top: -9px;
+  margin-top: -66px;
   padding-right: 13px;
   color: rgb(168, 168, 168);
   animation-name: deleteBtnHoverReturn;
