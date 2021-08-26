@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import * as $ from "jquery";
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -12,9 +11,15 @@ export class AppComponent implements OnInit {
   employees: any;
 
   profileDisplayer: boolean = false;
+  createMenuDisplayer: boolean = false;
 
   displayProfile(){
         this.profileDisplayer = true;
+  }
+
+  displayCreate(){
+        this.createMenuDisplayer = true;
+        console.log("CREATE MENU:" + this.createMenuDisplayer);
   }
 
   constructor(private http: HttpClient) {
@@ -30,6 +35,17 @@ export class AppComponent implements OnInit {
       })
   }
 
+  deleteEmployee(employeeID:number){
+
+    console.log('HEREEE'+employeeID)
+
+    fetch('/api/employee/' + employeeID,{method:'DELETE'}).then(data => window.location.reload())
+
+   // this.http.delete('http://localhost:5001/api/employee/' + employeeID)
+    //.subscribe(Response => {
+     // console.log(Response)
+    //})
+  }
 
   // handleClick(event : any) {
 

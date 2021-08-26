@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 export class ProfileEditComponent implements OnInit {
 
   employees: any;
-  yeah = -1;
+  employeeCounter = -1;
 
   constructor(private http: HttpClient,
     private route: ActivatedRoute) {
@@ -26,11 +26,11 @@ export class ProfileEditComponent implements OnInit {
       })
 
     this.route.paramMap.subscribe(params => {
-      this.yeah = Number(this.route.snapshot.paramMap.get('employees.id'));
-      if (this.yeah > 0) {
-        --this.yeah;
+      this.employeeCounter = Number(this.route.snapshot.paramMap.get('employees.id'));
+      if (this.employeeCounter > 0) {
+        --this.employeeCounter;
       }
-      console.log(this.yeah);
+      console.log(this.employeeCounter);
     });
   }
 }

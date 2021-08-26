@@ -1,5 +1,5 @@
 <div class="content" role="main">
-    <h1>List of Employees<a routerLink="/app-profile-create" routerLinkActive="active"><span class="material-icons btn">add</span></a></h1>
+    <h1>List of Employees<a (click)="displayCreate()" routerLink="/app-profile-create" routerLinkActive="active"><span class="material-icons btn">add</span></a></h1>
 
     <ul class="employee-preview">
       <li class="employee-tab" *ngFor="let e of employees">
@@ -14,11 +14,13 @@
             <p class="employee-preview-position">
               {{e.employeeJobPosition}} at {{e.employeeCompany}}
             </p>
-            <a class="delete-btn-presser" routerLink="/app-profile-delete" routerLinkActive="active"><span class="material-icons btn delete-btn">delete</span></a>
+            <a class="delete-btn-presser" (click)="deleteEmployee(e.employeeID)" routerLink="/app-profile-delete" routerLinkActive="active"><span class="material-icons btn delete-btn">delete</span></a>
           </a>
           </li>
       </ul>
 
     </div>
+
+    <app-profile-create [showCreate]="createMenuDisplayer"></app-profile-create>
     <app-profile-select [showProfile]="profileDisplayer"></app-profile-select>
-    <!-- <router-outlet></router-outlet> -->
+    <router-outlet></router-outlet>

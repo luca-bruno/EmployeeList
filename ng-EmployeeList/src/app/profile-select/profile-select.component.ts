@@ -17,20 +17,11 @@ export class ProfileSelectComponent implements OnInit {
 
   employees : any;
   data = "";
-  yeah = -1;
-
-  showOutlet: boolean = false;
-
-  onActivate(event : any) {
-  this.showOutlet = true;
-  }
-
-  onDeactivate(event : any) {
-  this.showOutlet = false;
-  }
+  employeeCounter = -1;
 
   @Input()
   showProfile: boolean = true;
+  showCreate: boolean = false;
 
   ngOnInit(): void {
 
@@ -41,11 +32,11 @@ export class ProfileSelectComponent implements OnInit {
     })
 
     this.route.paramMap.subscribe(params => {
-      this.yeah = Number(this.route.snapshot.paramMap.get('employees.id'));
-      if(this.yeah > 0){
-        --this.yeah;
+      this.employeeCounter = Number(this.route.snapshot.paramMap.get('employees.id'));
+      if(this.employeeCounter > 0){
+        --this.employeeCounter;
       }
-      console.log(this.yeah);
+      console.log(this.employeeCounter);
     });
   }
 
