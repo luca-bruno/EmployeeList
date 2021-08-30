@@ -1,26 +1,31 @@
+<!-- Sidebar component -->
 <div class="content" role="main">
+  <!-- Create new employee -->
     <h1>List of Employees<a (click)="displayCreate()" routerLink="/app-profile-create" routerLinkActive="active"><span class="material-icons btn">add</span></a></h1>
 
+    <!-- Sidebar -->
     <ul class="employee-preview">
       <li class="employee-tab" *ngFor="let e of employees">
-        <!-- <a id="{{e.employeeID}}" (click)="handleClick(e.employeeID)" class="employee-btn-presser" routerLink="/app-profile-select/{{e.employeeID}}" routerLinkActive="active"> -->
-        <!-- <a class="employee-btn-presser" routerLink="/app-profile-select/{{e.employeeID}}" routerLinkActive="active"> -->
+        <!-- Employee tab -->
         <a class="employee-btn-presser" (click)="displayProfile()" routerLink="/app-profile-select/{{e.employeeID}}" routerLinkActive="active">
-            <img class="employee-image" src="{{e.employeePic}}" alt="">
-            <!-- https://i0.wp.com/prikachi.com/wp-content/uploads/2020/07/DPP1.jpg DEFAULT -->
-            <p class="employee-preview-name">
-              {{e.employeeName}}
-            </p>
-            <p class="employee-preview-position">
-              {{e.employeeJobPosition}} at {{e.employeeCompany}}
-            </p>
-            <a class="delete-btn-presser" (click)="deleteEmployee(e.employeeID)" routerLink="/app-profile-delete" routerLinkActive="active"><span class="material-icons btn delete-btn">delete</span></a>
-          </a>
-          </li>
-      </ul>
+          <!-- Employee avatar  -->
+          <img class="employee-image" src="{{e.employeePic}}" alt="">
+          <!-- Employee name -->
+          <p class="employee-preview-name">
+            {{e.employeeName}}
+          </p>
+          <!-- Employee position & company -->
+          <p class="employee-preview-position">
+            {{e.employeeJobPosition}} at {{e.employeeCompany}}
+          </p>
+          <!-- Delete employee -->
+          <a class="delete-btn-presser" (click)="deleteEmployee(e.employeeID)" routerLinkActive="active"><span class="material-icons btn delete-btn">delete</span></a>
+        </a>
+      </li>
+    </ul>
 
-    </div>
+</div>
 
-    <app-profile-create [showCreate]="createMenuDisplayer"></app-profile-create>
-    <app-profile-select [showProfile]="profileDisplayer"></app-profile-select>
-    <router-outlet></router-outlet>
+<app-profile-create [showCreate]="createMenuDisplayer"></app-profile-create>
+<app-profile-select [showProfile]="profileDisplayer"></app-profile-select>
+<router-outlet></router-outlet>

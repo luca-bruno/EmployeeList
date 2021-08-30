@@ -1,57 +1,44 @@
+<!-- Pre-selection message -->
 <div class="display-info" *ngIf="showProfile == false && showCreate == false; else profileDisplay">
   <p class="unselected-dialog">Please select an employee.</p>
 </div>
 
+<!-- Selected employee profile page -->
 <ng-template #profileDisplay>
-  <ng-container *ngIf="employeeCounter != 0; else firstProfile">
+  <ng-container>
+    <!-- Top-right buttons -->
     <div class="display-info">
-      <a routerLink="/app-profile-delete" routerLinkActive="active"><span class="material-icons btn rightHandSideBtns">delete</span></a>
+      <!-- Delete employee -->
+      <a (click)="deleteEmployee(employees[employeeCounter].employeeID)" routerLinkActive="active"><span
+        class="material-icons btn rightHandSideBtns">delete</span></a>
+      <!-- Edit employee -->
       <a routerLink="/app-profile-edit/{{employees[employeeCounter].employeeID}}" routerLinkActive="active"><span class="material-icons btn rightHandSideBtns">edit</span></a>
 
-        <img class="photo" src="{{employees[employeeCounter].employeePic}}" alt="">
-        <!-- https://i0.wp.com/prikachi.com/wp-content/uploads/2020/07/DPP1.jpg DEFAULT PIC, perhaps save locally -->
-        <div class="full-bio">
-          <p class="name">{{employees[employeeCounter].employeeName}}</p>
-          <p class="position">{{employees[employeeCounter].employeeJobPosition}} at {{employees[employeeCounter].employeeCompany}}</p>
-          <div class="info">
-            <p class="info-header">Motto</p>
-            <p class="info-field">{{employees[employeeCounter].employeeMotto}}</p>
-            <p class="info-header">Hobbies</p>
-            <p class="info-field">{{employees[employeeCounter].employeeHobbies}}</p>
-            <p class="info-header">Hometown</p>
-            <p class="info-field">{{employees[employeeCounter].employeeHometown}}</p>
-            <p class="info-header">Personal Blog</p>
-            <a href="{{employees[employeeCounter].employeeBlog}}"><p class="info-field blog-domain">{{employees[employeeCounter].employeeBlog}}</p></a>
-          </div>
+      <!-- Employee avatar -->
+      <img class="photo" src="{{employees[employeeCounter].employeePic}}" alt="">
+      <!-- Employee details -->
+      <div class="full-bio">
+        <!-- Employee name -->
+        <p class="name">{{employees[employeeCounter].employeeName}}</p>
+        <!-- Employee position & company -->
+        <p class="position">{{employees[employeeCounter].employeeJobPosition}} at
+          {{employees[employeeCounter].employeeCompany}}</p>
+        <div>
+          <!-- Employee motto -->
+          <p class="info-header">Motto</p>
+          <p class="info-field">{{employees[employeeCounter].employeeMotto}}</p>
+          <!-- Employee hobbies -->
+          <p class="info-header">Hobbies</p>
+          <p class="info-field">{{employees[employeeCounter].employeeHobbies}}</p>
+          <!-- Employee hometown -->
+          <p class="info-header">Hometown</p>
+          <p class="info-field">{{employees[employeeCounter].employeeHometown}}</p>
+          <!-- Employee blog -->
+          <p class="info-header">Personal Blog</p>
+          <a href="{{employees[employeeCounter].employeeBlog}}"><p class="info-field blog-domain">{{employees[employeeCounter].employeeBlog}}</p></a>
         </div>
-
       </div>
-    </ng-container>
 
-    <ng-template #firstProfile>
-      <router-outlet></router-outlet>
-      <div class="display-info">
-        <a routerLink="/app-profile-delete" routerLinkActive="active"><span class="material-icons btn rightHandSideBtns">delete</span></a>
-        <a routerLink="/app-profile-edit/{{employees[0].employeeID}}" routerLinkActive="active"><span class="material-icons btn rightHandSideBtns">edit</span></a>
-
-          <img class="photo" src="{{employees[0].employeePic}}" alt="">
-          <!-- https://i0.wp.com/prikachi.com/wp-content/uploads/2020/07/DPP1.jpg DEFAULT PIC, perhaps save locally -->
-          <div class="full-bio">
-            <p class="name">{{employees[0].employeeName}}</p>
-            <p class="position">{{employees[0].employeeJobPosition}} at {{employees[0].employeeCompany}}</p>
-            <div class="info">
-              <p class="info-header">Motto</p>
-              <p class="info-field">{{employees[0].employeeMotto}}</p>
-              <p class="info-header">Hobbies</p>
-              <p class="info-field">{{employees[0].employeeHobbies}}</p>
-              <p class="info-header">Hometown</p>
-              <p class="info-field">{{employees[0].employeeHometown}}</p>
-              <p class="info-header">Personal Blog</p>
-              <a href="{{employees[0].employeeBlog}}"><p class="info-field blog-domain">{{employees[0].employeeBlog}}</p></a>
-            </div>
-          </div>
-
-        </div>
-    </ng-template>
+    </div>
+  </ng-container>
 </ng-template>
-

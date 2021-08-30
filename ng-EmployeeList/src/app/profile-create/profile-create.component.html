@@ -1,30 +1,46 @@
+<!-- Create new employee page -->
 <div class="display-info" *ngIf="showCreate == true && showProfile == false">
-  <a routerLink="/" routerLinkActive="active"><span class="material-icons btn rightHandSideBtns">save</span></a>
-  <div class="photo-swap">
-    <img class="photo" src="https://i0.wp.com/prikachi.com/wp-content/uploads/2020/07/DPP1.jpg" alt="">
-    <img class="photo toEdit" src="https://media.istockphoto.com/vectors/pencil-icon-vector-vector-id518699375?k=6&m=518699375&s=170667a&w=0&h=NFjOjp6-sAGSJLYPYoMDahiCWWacTMXYnE_YhAitx2w=" alt="">
-  </div>
 
   <div class="full-bio">
+    <!-- Create reactive form -->
     <form [formGroup]="createForm" style="margin-top: 37px;" (ngSubmit)="onSubmit()">
-      <p class="form-header">Full name</p>
-      <input formControlName="name" class="form-header name"><p></p>
-      <p class="form-header">Job Position</p>
-      <input formControlName="position" class="form-header position"> at <input formControlName="company" class="form-header position"><p></p>
-      <p class="form-header">Motto</p>
-      <input formControlName="motto" class="form-field">
-      <p class="form-header">Hometown</p>
-      <input formControlName="hometown" class="form-field">
-      <p class="form-header">Personal Blog</p>
-      http://www.<input formControlName="blog" class="form-field blog-domain">
-      <input type="submit">
-    </form>
-
-    <div class="full-bio" *ngIf="createForm.touched == true">
-      {{createForm.value.name}}
+      <!-- Avatar change (from default set) -->
+      <div class="photo-swap">
+        <!-- Click image to change avatar -->
+        <label for="file-input">
+          <!-- Default avatar -->
+          <img class="photo" src="https://i0.wp.com/prikachi.com/wp-content/uploads/2020/07/DPP1.jpg" alt="">
+          <!-- Hover 'pencil' icon -->
+          <img class="photo toEdit" src="https://media.istockphoto.com/vectors/pencil-icon-vector-vector-id518699375?k=6&m=518699375&s=170667a&w=0&h=NFjOjp6-sAGSJLYPYoMDahiCWWacTMXYnE_YhAitx2w=" alt="">
+        </label>
+        <!-- Currently functional for solely local files - must be amended to allow for web URLs -->
+        <input id="file-input" name="profilepic" type="file"/>
     </div>
 
-    <router-outlet></router-outlet>
+      <!-- Employee name -->
+      <label class="form-header">Full name</label><br>
+      <input name="name" type="text" formControlName="employeeName" class="form-header name" required><br>
+      <!-- Employee position & company -->
+      <label class="form-header">Job Position</label><br>
+      <input type="text" formControlName="employeeJobPosition" class="form-field position" required> at <input formControlName="employeeCompany" class="form-field position company" required><br>
+      <!-- Employee motto -->
+      <label class="form-header">Motto</label><br>
+      <input type="text" formControlName="employeeMotto" class="form-field motto"><br>
+      <!-- Employee hobbies -->
+      <label class="form-header">Hobbies</label><br>
+      <input type="text" formControlName="employeeHobbies" class="form-field motto" required><br>
+      <!-- Employee hometown -->
+      <label class="form-header">Hometown</label><br>
+      <input type="text" formControlName="employeeHometown" class="form-field" required><br>
+      <!-- Employee blog -->
+      <label class="form-header">Personal Blog</label><br>
+      <span style="margin-left: 55px; color: #76B635" class="">https://</span>
+      <input type="text" formControlName="employeeBlog" class="form-field blog-domain"><br>
+      <!-- Save changes -->
+      <button type="submit" class="material-icons btn rightHandSideBtns">save</button>
+    </form>
+
   </div>
 </div>
 
+<router-outlet></router-outlet>

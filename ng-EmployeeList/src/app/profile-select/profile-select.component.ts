@@ -10,54 +10,36 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProfileSelectComponent implements OnInit {
 
-  constructor(private http: HttpClient,
-    private route: ActivatedRoute) {
-
-  }
-
-  employees : any;
+  employees: any;
   data = "";
-  employeeCounter = -1;
+  employeeCounter = 0;
 
   @Input()
   showProfile: boolean = true;
   showCreate: boolean = false;
 
+  constructor(private http: HttpClient, private route: ActivatedRoute) {
+
+  }
+
   ngOnInit(): void {
 
-    this.http.get('/api/employee')
+    this.http.get('/api/employee')  // fetch employee list from API
     .subscribe(Response => {
       console.log(Response);
       this.employees = Response;
-    })
 
-    this.route.paramMap.subscribe(params => {
-      this.employeeCounter = Number(this.route.snapshot.paramMap.get('employees.id'));
-      if(this.employeeCounter > 0){
-        --this.employeeCounter;
-      }
-      console.log(this.employeeCounter);
-    });
+      this.route.paramMap.subscribe(params => {
+        let idInUrl = Number(this.route.snapshot.paramMap.get('employees.id'));  // get ID query parameter value from URL as integer
+        this.employeeCounter = (this.employees.findIndex((obj: any) => obj.employeeID === idInUrl)); // parameter values compared to match array element var (employeeCounter)
+
+        console.log("Employee counter: " + this.employeeCounter);
+      });
+    })
   }
 
-    // console.log(this.route.snapshot.params); //retrieves section of current URL path MIGHT NOT BE NEEDED
-    // this.data = this.route.snapshot.params.employeeID;
-
-    // var hello = JSON.parse(this.route.snapshot.params.employeeID.employeeID);
-    // console.log("hello:" + hello);
-    // take data of URL, minus 1 into new var, use new var in element on HTML
-
-
-
-  // handleClick(event : any) {
-
-  //   console.log(event);
-  //   let employee = this.employees.filter((x : any) => x.employeeId == event.target.id);
-
-  //   //set data for single employee details
-
-  // }
-
-
-
+  deleteEmployee(employeeID: number) {
+    fetch('/api/employee/' + employeeID, { method: 'DELETE' })
+      .then(data => window.location.reload()) // reload app post-Delete
+  }
 }

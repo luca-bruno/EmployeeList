@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 namespace EmployeeList.Controllers
 {
     [Route("api/[controller]")]
+    [Route("api/[controller]/{id}")]
+
     [ApiController]
     public class EmployeeController : ControllerBase
     {
@@ -19,7 +21,7 @@ namespace EmployeeList.Controllers
             {
                 EmployeeContext ctx = new EmployeeContext();
 
-                List<Employee> employees = ctx.Employees.Where(x => x.Active).ToList();
+                List<Employee> employees = ctx.Employees.Where(x => x.isActive).ToList();
 
                 return Ok(employees); // returns 200 status code
             }
@@ -38,7 +40,7 @@ namespace EmployeeList.Controllers
 
                 Employee employee = ctx.Employees.Where(x => x.employeeID == employeeID).FirstOrDefault();
 
-                employee.Active = false;
+                employee.isActive = false;
 
                 ctx.Employees.Update(employee);
 
@@ -59,7 +61,7 @@ namespace EmployeeList.Controllers
             {
                 EmployeeContext ctx = new EmployeeContext();
 
-                employee.Active = true;
+                employee.isActive = true;
 
                 ctx.Employees.Add(employee);
 

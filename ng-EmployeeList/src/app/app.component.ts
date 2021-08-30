@@ -13,48 +13,33 @@ export class AppComponent implements OnInit {
   profileDisplayer: boolean = false;
   createMenuDisplayer: boolean = false;
 
-  displayProfile(){
-        this.profileDisplayer = true;
-  }
-
-  displayCreate(){
-        this.createMenuDisplayer = true;
-        console.log("CREATE MENU:" + this.createMenuDisplayer);
-  }
-
   constructor(private http: HttpClient) {
 
   }
 
   ngOnInit(): void {
 
-    this.http.get('/api/employee')
+    this.http.get('/api/employee')  // fetch employee list from API
       .subscribe(Response => {
         console.log(Response)
         this.employees = Response;
       })
   }
 
-  deleteEmployee(employeeID:number){
+    displayProfile() {  // toggle bool to display profile select page
+      this.profileDisplayer = true;
+      this.createMenuDisplayer = false;
+    }
 
-    console.log('HEREEE'+employeeID)
+    displayCreate() { // toggle bool to display create employee page
+      this.createMenuDisplayer = true;
+      this.profileDisplayer = false;
+    }
 
-    fetch('/api/employee/' + employeeID,{method:'DELETE'}).then(data => window.location.reload())
-
-   // this.http.delete('http://localhost:5001/api/employee/' + employeeID)
-    //.subscribe(Response => {
-     // console.log(Response)
-    //})
+  deleteEmployee(employeeID: number) {
+    fetch('/api/employee/' + employeeID, { method: 'DELETE' })
+      .then(data => window.location.reload()) // refresh app post-Delete
   }
-
-  // handleClick(event : any) {
-
-  //   console.log(event);
-  //   let employee = this.employees.filter((x : any) => x.employeeId == event.target.id);
-
-  //   //set data for single employee details
-
-  // }
 
 }
 

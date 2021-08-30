@@ -1,5 +1,6 @@
 .photo-swap{
   position: relative;
+  margin-bottom: 50px;
 }
 
 .toEdit{
@@ -9,6 +10,7 @@
   top: 0;
   left: 0;
   right: 0;
+  margin-bottom: 50px;
 }
 
 .toEdit:hover{
@@ -18,11 +20,7 @@
 .form-header{
   color:rgb(168, 168, 168);
   margin-left: 55px;
-  margin-bottom: 0px;
-}
-
-p.form-header:nth-of-type(3){
-  margin-top: 44px;
+  margin-bottom: 30px;
 }
 
 .position:nth-of-type(3){
@@ -31,8 +29,12 @@ p.form-header:nth-of-type(3){
 
 .form-field{
   color:rgb(168, 168, 168);
-  margin-left: 0px;
   margin-left: 55px;
+  margin-bottom: 30px;
+}
+
+.form-field.blog-domain{
+  margin-left: 0px;
 }
 
 input{
@@ -41,6 +43,19 @@ input{
   letter-spacing: 2px;
   font-weight: 600;
   color:rgb(168, 168, 168);
+  width: 13em;
+}
+
+input.company{
+  width: 11.5em;
+}
+
+input.motto{
+  width: 38em;
+}
+
+input.blog-domain{
+  width: 31em;
 }
 
 input:first-of-type{
@@ -48,6 +63,24 @@ input:first-of-type{
   font-size: 24px;
 }
 
-input:nth-of-type(6){
+input:nth-of-type(7){
   color:#76B635;
+}
+
+button{
+  position: absolute;
+  top: -3px;
+  right: -8px;
+  border: none;
+  background: white;
+  padding: 0;
+  cursor: pointer;
+}
+
+.photo-swap > input{
+    display: none;
+}
+
+.photo-swap img{
+    cursor: pointer;
 }

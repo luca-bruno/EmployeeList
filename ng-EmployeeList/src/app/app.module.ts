@@ -8,7 +8,6 @@ import { AppComponent } from './app.component';
 import { ProfileEditComponent } from './profile-edit/profile-edit.component';
 import { ProfileSelectComponent } from './profile-select/profile-select.component';
 import { ProfileCreateComponent } from './profile-create/profile-create.component';
-import { ProfileDeleteComponent } from './profile-delete/profile-delete.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +15,6 @@ import { ProfileDeleteComponent } from './profile-delete/profile-delete.componen
     ProfileEditComponent,
     ProfileSelectComponent,
     ProfileCreateComponent,
-    ProfileDeleteComponent
   ],
   imports: [
     BrowserModule,

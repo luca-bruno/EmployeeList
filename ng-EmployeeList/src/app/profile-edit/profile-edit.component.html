@@ -1,20 +1,42 @@
+<!-- Edit employee details page-->
 <div class="display-info">
-  <a routerLink="/" routerLinkActive="active"><span class="material-icons btn rightHandSideBtns">save</span></a>
-  <div class="photo-swap">
-    <img class="photo" src="{{employees[employeeCounter].employeePic}}" alt="">
-    <img class="photo toEdit" src="https://media.istockphoto.com/vectors/pencil-icon-vector-vector-id518699375?k=6&m=518699375&s=170667a&w=0&h=NFjOjp6-sAGSJLYPYoMDahiCWWacTMXYnE_YhAitx2w=" alt="">
-    <!-- https://i0.wp.com/prikachi.com/wp-content/uploads/2020/07/DPP1.jpg DEFAULT PIC, perhaps save locally -->
-  </div>
+
   <div class="full-bio">
-    <form style="margin-top: 37px;" action="">
-      <input value="{{employees[employeeCounter].employeeName}}" class="form-header name"><p></p>
-      <input class="form-header position"> at <input class="form-header position"><p></p>
-      <p class="form-header">Motto</p>
-      <input class="form-field">
-      <p class="form-header">Hometown</p>
-      <input class="form-field">
-      <p class="form-header">Personal Blog</p>
-      https://www.<input class="form-field blog-domain">
+    <!-- Edit reactive form -->
+    <form [formGroup]="editForm" style="margin-top: 37px;" (ngSubmit)="onSubmit(employees[employeeCounter].employeeID)">
+      <!-- Avatar change -->
+      <div class="photo-swap">
+        <!-- Click image to change avatar -->
+        <label for="file-input">
+          <!-- Default avatar -->
+          <img id="avatar" class="photo" src="{{employees[employeeCounter].employeePic}}" alt="">
+          <!-- Hover 'pencil' icon -->
+          <img class="photo toEdit" src="https://media.istockphoto.com/vectors/pencil-icon-vector-vector-id518699375?k=6&m=518699375&s=170667a&w=0&h=NFjOjp6-sAGSJLYPYoMDahiCWWacTMXYnE_YhAitx2w=" alt="">
+        </label>
+        <!-- Currently functional for solely local files - must be amended to allow for web URLs -->
+        <input id="file-input" name="profilepic" type="file" onchange="loadFile(event)"/>
+    </div>
+
+      <!-- Employee name -->
+      <label class="form-header">Full name</label><br>
+      <input type="text" formControlName="employeeName" class="form-header name" required><br>
+      <!-- Employee position & company -->
+      <label class="form-header">Job Position</label><br>
+      <input type="text" formControlName="employeeJobPosition" class="form-field position" required> at <input type="text" formControlName="employeeCompany" class="form-field position company" required><br>
+      <!-- Employee motto -->
+      <label class="form-header">Motto</label><br>
+      <input type="text" formControlName="employeeMotto" class="form-field motto"><br>
+      <!-- Employee hobbies -->
+      <label class="form-header">Hobbies</label><br>
+      <input type="text" formControlName="employeeHobbies" class="form-field motto" required><br>
+      <!-- Employee hometown -->
+      <label class="form-header">Hometown</label><br>
+      <input type="text" formControlName="employeeHometown" class="form-field" required><br>
+      <!-- Employee blog -->
+      <label class="form-header">Personal Blog</label><br>
+      <input type="text" formControlName="employeeBlog" class="form-field blog-domain"><br>
+      <!-- Save changes -->
+      <button type="submit" [hidden]="!editForm.valid" class="material-icons btn rightHandSideBtns">save</button>
     </form>
 
     <router-outlet></router-outlet>
