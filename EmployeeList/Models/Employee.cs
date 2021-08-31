@@ -28,6 +28,7 @@ namespace EmployeeList.Models
         public string employeeBlog { get; set; }
 
         public string employeePic { get; set; }
+
         public bool isActive { get; set; }
     }
 }

@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
-import * as $ from 'jquery';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-profile-edit',
@@ -51,7 +50,7 @@ export class ProfileEditComponent implements OnInit {
           employeeHobbies: this.employees[this.employeeCounter].employeeHobbies,
           employeeHometown: this.employees[this.employeeCounter].employeeHometown,
           employeeBlog: this.employees[this.employeeCounter].employeeBlog,
-          employeePic: this.employees[this.employeeCounter].employeePic
+          employeePic: ''
       });
 
     })
@@ -75,26 +74,27 @@ export class ProfileEditComponent implements OnInit {
     this.http.put<any>('/api/employee/' + employeeID, body) // PUT request to API
         .subscribe(data => { employeeID == data.employeeID;
           console.log(data);
-          window.location.reload(); // refresh page post-PUT request
+          // window.location.reload(); // refresh page post-PUT request
         })
 
         console.log(this.editForm);
   }
-//TODO FIX
-  loadFile(event: any){
-    console.log("hello");
-    var reader = new FileReader();
-    reader.onload = function(e: any){
-      // var output : any = document.getElementById('avatar');
-      // output.src = reader.result;
-      $('#avatar')
-        .attr('src', e.target.result)
-    };
-    reader.readAsDataURL(event.target.files[0]);
+
+  // Method below does not work - intended to allow file image upload and preview in place of img #avatar
+  onFileSelected(event: any){
+    console.log(event.target.files[0]);
+    if(event.target.files){
+      console.log("helllo");
+      var reader = new FileReader();
+      // reader.readAsDataURL(event.target.files[0]);
+      console.log(reader.readAsDataURL(event.target.files[0]));
+      document.getElementById('avatar')!.setAttribute('src', window.URL.createObjectURL(event.files[0]))
+    }
   }
-//TODO:END FIX
+
   deleteEmployee(employeeID: number) {
     fetch('/api/employee/' + employeeID, { method: 'DELETE' })
       .then(data => window.location.reload())
   }
 }
+

@@ -9,12 +9,12 @@
         <!-- Click image to change avatar -->
         <label for="file-input">
           <!-- Default avatar -->
-          <img class="photo" src="https://i0.wp.com/prikachi.com/wp-content/uploads/2020/07/DPP1.jpg" alt="">
+          <img id="avatar" class="photo" src="https://i0.wp.com/prikachi.com/wp-content/uploads/2020/07/DPP1.jpg" alt="">
           <!-- Hover 'pencil' icon -->
           <img class="photo toEdit" src="https://media.istockphoto.com/vectors/pencil-icon-vector-vector-id518699375?k=6&m=518699375&s=170667a&w=0&h=NFjOjp6-sAGSJLYPYoMDahiCWWacTMXYnE_YhAitx2w=" alt="">
         </label>
         <!-- Currently functional for solely local files - must be amended to allow for web URLs -->
-        <input id="file-input" name="profilepic" type="file"/>
+        <input id="file-input" formControlName="employeePic" type="file" (change)="onFileSelected($event)"/>
     </div>
 
       <!-- Employee name -->
